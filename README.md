@@ -1,8 +1,8 @@
-# Proyecto de Inicio de Sesión en React Native
+# Proyecto de inicio de sesión en React Native
 
-Este proyecto es una aplicación de inicio de sesión en React Native que utiliza Firebase para la autenticación. Incluye funcionalidades para crear una cuenta, iniciar sesión, restablecer la contraseña y cerrar sesión. Además, muestra un gráfico de temperatura media mensual en Hermosillo.
+Este proyecto es una aplicación de inicio de sesión en React Native que utiliza Firebase para la autenticación. Incluye funcionalidades para crear una cuenta, iniciar sesión, restablecer la contraseña y cerrar sesión. Al iniciar sesión, muestra un gráfico sobre le temperatura media mensual en la ciudad de Hermosillo, Sonora. 
 
-## Estructura del Proyecto
+## Estructura del proyecto
 
 ### 'App.js'
 
@@ -40,7 +40,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 ```
 
-### Pantalla de Autenticación (AuthScreen)
+### Pantalla de autenticación (AuthScreen)
 
 Define la pantalla de autenticación con campos para correo electrónico y contraseña, y botones para iniciar sesión, crear cuenta y restablecer contraseña.
 ```
@@ -85,7 +85,7 @@ const AuthScreen = ({ email, setEmail, password, setPassword, isLogin, setIsLogi
 }
 ```
 
-### Pantalla Autenticada (AuthenticatedScreen)
+### Pantalla autenticada (AuthenticatedScreen)
 
 Define la pantalla que se muestra cuando el usuario ha iniciado sesión
 
@@ -103,7 +103,7 @@ const AuthenticatedScreen = ({ user, handleSignOut }) => {
 };
 ```
 
-### Componente Principal (App)
+### Componente principal (App)
 
 El componente principal maneja el estado de autenticación, configura la navegación y renderiza las pantallas correspondientes.
 ```
@@ -286,6 +286,13 @@ export const styles = StyleSheet.create({
     },
 });
 ```
+
+### Qué necesitas
+
+- Para este programa, necesitas Node.js para la compilación, en adición, es necesario tener instalado JavaScript en tu equipo.
+- En cuanto a las librerías, es necesario instalar react native chart kit y react navigation native.
+- Para la base de datos, es necesario haber instalado Firebase. 
+
 
 ### Contribución
 
