@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TouchableOpacity, Text, View, TextInput, ActivityIndicator, Alert,Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, TextInput, ScrollView, ActivityIndicator, Alert,Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { initializeApp } from '@firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail,onAuthStateChanged, signOut } from '@firebase/auth';
-import { LineChart } from 'react-native-chart-kit';
+
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyCAG72dU4OMWU658tXsg1BQmRVJhgQ42nA",
@@ -57,53 +58,14 @@ const AuthScreen = ({ email, setEmail, password, setPassword, isLogin, setIsLogi
         </View>
     );
 }
-const AuthenticatedScreen = ({ user, handleSignOut }) => {
-    const screenWidth = Dimensions.get('window').width;
-    const chartConfig = {
-        backgroundColor: '#ffffff',
-        backgroundGradientFrom: '#ffffff',
-        backgroundGradientTo: '#ffffff',
-        decimalPlaces: 1,
-        color: (opacity = 1) => `rgba(255, 0, 0, ${opacity})`, // color rosado para la línea
-        labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`, // color de las etiquetas
-        style: {
-            borderRadius: 16,
-        },
-        propsForDots: {
-            r: '6',
-            strokeWidth: '2',
-            stroke: '#ff6384',
-        },
-    };
-
-    const data = {
-        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-        datasets: [
-            {
-                data: [14, 16, 19, 26, 27, 31, 34, 34, 31, 25, 18, 13],
-                strokeWidth: 2,
-            },
-        ],
-    };
-
+const AuthenticatedScreen = ({ user, handleSignOut }) => {  
     return (
-        <View style={styles.authContainer}>
-            <Text style={styles.titulo}>¡Bienvenido!</Text>
-            <Text style={styles.textinput}>{user.email}</Text>
-            <TouchableOpacity onPress={handleSignOut} style={styles.button}>
-                <Text style={styles.buttonText}>Cerrar sesión</Text>
-            </TouchableOpacity>
-            <View style={styles.containerG}>
-                <Text style={styles.subsubtitulo}>Temperatura media mensual en Hermosillo</Text>
-                <LineChart
-                    data={data}
-                    width={screenWidth}
-                    yAxisLabel={'°C '}
-                    height={400}
-                    chartConfig={chartConfig}
-                    style={styles.chart}
-                />
-            </View>
+      <View style={styles.authContainer}>
+        <Text style={styles.titulo}>Bienvenido</Text>
+        <Text style={styles.textinput}>{user.email}</Text>
+        <TouchableOpacity onPress={handleSignOut} style={styles.button}>
+          <Text style={styles.buttonText}>Cerrar sesión</Text>
+        </TouchableOpacity>
         </View>
     );
 };
@@ -272,10 +234,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 15,
         backgroundColor: '#f1f1f1',
-    },
-    chart: {
+      },
+      chart: {
         marginVertical: 8,
         borderRadius: 16,
-    },
+      },
 });
 
